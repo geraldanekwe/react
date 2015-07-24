@@ -11,7 +11,7 @@ var Goodbye = React.createClass({
     var hellos = [];
 
     for(var i = 0; i < names.length; i++){
-      hellos.push(<h1>{greetings[i%3]} {names[i]}</h1>)
+      hellos.push(<h1 key={i}>{greetings[i%greetings.length]} {names[i]}</h1>)
     };
 
     return (
