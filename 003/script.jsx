@@ -1,37 +1,58 @@
-var Hello = React.createClass({
-  getInitialState: function() {
-    return { greeting: 'Welcome', name: 'State'}
-  },
-  greet: function() {
-    this.setState(
-      { greeting: 'Hello', name: this.refs.name2greet.value}
-    );
-  },
-  componentDidMount: function(){
+var OneUserGreeting = React.createClass({
+  render: function() {
+    return <li>Hello {this.props.name}</li>;
+  }
+});
 
-  },
-  componentWillMount: function(){
-
-  },
-  componentWillUnmount: function(){
-
+var Form = React.createClass({
+  handleSubmit: function(e){
+    e.preventDefault();
+    this.props.greet(this.refs.name2greet);
   },
   render: function() {
     return (
-      <div>
+      <form>
         <input placeholder="Name" ref="name2greet" />
-        <button onClick={this.greet}>Greet</button>
-        {this.state.greeting} {this.state.name}
+        <button onClick={this.handleSubmit}>Greet</button>
+      </form>
+    )
+  }
+});
+
+var ListOfGreetings = React.createClass({
+  render: function() {
+    var usersLIs = this.props.users.map(function(name, i){
+      return <OneUserGreeting name={name} key={i} />;
+    })
+    return (
+      <div>
+        <ul>
+          {usersLIs}
+        </ul>
       </div>
     );
   }
 })
 
 var App = React.createClass({
+  getInitialState: function() {
+    return { users: []};
+  },
+  greet: function(nameInput) {
+  // name = this.refs.name2greet
+
+    this.setState(
+      { users: this.state.users.concat(nameInput.value) },
+      function() {
+        nameInput.value = '';
+      }
+    );
+  },
   render: function() {
     return (
       <div>
-        <Hello />
+        <Form greet={this.greet} />
+        <ListOfGreetings users={this.state.users}/>
       </div>
     )
   }
