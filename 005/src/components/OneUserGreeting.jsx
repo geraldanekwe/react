@@ -2,7 +2,6 @@ var React = require("react");
 
 var OneUserGreeting = React.createClass({
   handleDelete: function() {
-    console.log(this.props.index);
     this.props.delete(this.props.index);
   },
   render: function() {
