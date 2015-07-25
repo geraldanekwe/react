@@ -16,3 +16,5 @@ var Form = React.createClass({
     )
   }
 });
+
+module.exports = Form;

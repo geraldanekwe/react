@@ -15,3 +15,5 @@ var ListOfGreetings = React.createClass({
     );
   }
 });
+
+module.exports = ListOfGreetings;

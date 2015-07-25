@@ -16,3 +16,5 @@ var OneUserGreeting = React.createClass({
   );
   }
 });
+
+module.exports = OneUserGreeting;

@@ -1,8 +1,9 @@
 var React = require("react");
+var ReactDOM = require("react-dom");
 
 var OneUserGreeting = require("./components/OneUserGreeting");
 var ListOfGreetings = require("./components/ListOfGreetings");
-var Form = require(".components/Form");
+var Form = require("./components/Form");
 
 var App = React.createClass({
   getInitialState: function() {
@@ -29,7 +30,7 @@ var App = React.createClass({
 });
 
 
-React.render(
+ReactDOM.render(
   <App />,
   document.getElementById("root")
 );
