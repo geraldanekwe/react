@@ -1,5 +1,9 @@
 var React = require("react");
 
+var OneUserGreeting = require("./components/OneUserGreeting");
+var ListOfGreetings = require("./components/ListOfGreetings");
+var Form = require(".components/Form");
+
 var App = React.createClass({
   getInitialState: function() {
     return { users: []};
@@ -23,3 +27,9 @@ var App = React.createClass({
     )
   }
 });
+
+
+React.render(
+  <App />,
+  document.getElementById("root")
+);
