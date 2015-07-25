@@ -10,7 +10,7 @@ var Form = React.createClass({
     return (
       <form onSubmit={this.handleSubmit} ref="userForm">
         <input placeholder="Name" ref="name2greet" />
-        <input type="email" placeholder="email" ref="email2greet" required/>
+        <input type="email" placeholder="email" ref="email2greet"/>
         <button type="submit">Greet</button>
       </form>
     )
