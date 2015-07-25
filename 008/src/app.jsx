@@ -5,29 +5,36 @@ import { Form, ListOfGreetings } from "./components/core";
 
 var App = React.createClass({
   getInitialState: function() {
-    return { contacts: [ {name: 'Trey'}, {name: 'Gerald'}, {name: 'Son'}], theme: 'white' };
+    return { users: [] };
   },
-  addContact: function(contact) {
+  greet: function(user) {
     this.setState({
-      contacts: this.state.contacts.concat(contact)
+      users: this.state.users.concat(user)
     });
+  },
+  style: function() {
+    return {
+      color: 'green',
+      fontSize: 40
+    }
   },
   theme: function() {
     return localStorage["theme"] || 'light';
   },
-  changeTheme: function(theme) {
+  toggleTheme: function(theme) {
     localStorage["theme"] = this.theme() === "dark" ? "light" : "dark";
     this.forceUpdate();
   },
   render: function() {
     return (
       <div className={this.theme()}>
-      <div className="container">
-        <Form addContact={this.addContact} />
-        <ListOfGreetings contacts={this.state.contacts} />
-        <button onClick={this.changeTheme}>Toggle</button>
+        <div className="container">
+          <div style={this.style()}>Hello Styling</div>
+          <Form greet={this.greet} />
+          <ListOfGreetings users={this.state.users} />
+            <a href="#" onClick={this.toggleTheme}>Toggle</a>
+        </div>
       </div>
-    </div>
     );
   }
 });
@@ -37,4 +44,4 @@ document.addEventListener("DOMContentLoaded", function() {
     <App />,
     document.getElementById("root")
   );
-});
+})

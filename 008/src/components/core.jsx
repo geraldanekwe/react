@@ -1,5 +1,5 @@
 import React from "react";
-import OneContact from "./OneContact";
+import OneUserGreeting from "./OneUserGreeting";
 
 export class ListOfGreetings extends React.Component {
   render() {
@@ -7,7 +7,7 @@ export class ListOfGreetings extends React.Component {
         return <OneUserGreeting user={user} key={i} />;
       });
       return (
-        <div className="card-panel hoverable grey lighten-3">
+        <div>
           <ul>
             {usersLIs}
           </ul>
@@ -19,7 +19,7 @@ export class ListOfGreetings extends React.Component {
 export class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addContact({ name: this.refs.name2greet.value, email: this.refs.email2greet.value });
+    this.props.greet({ name: this.refs.name2greet.value, email: this.refs.email2greet.value });
     this.refs.userForm.reset();
   }
   render() {
